@@ -1,0 +1,14 @@
+.category-list {
+    background-color: white;
+    padding: 1rem 0 2rem 0;
+}
+
+.card-list {
+    margin: 2rem;
+    padding: 0;
+    list-style: none;
+}
+
+.load-more .btn {
+    display: block;
+}

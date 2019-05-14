@@ -1,0 +1,55 @@
+.top-section {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-auto-rows: 14.1rem 14.1rem;
+    grid-template-areas: "lp rt" "lp rb";
+}
+
+.top-section .left-pane {
+    grid-area: lp;
+    display: flex;
+}
+
+.top-section .left-pane .top-card {
+    margin: 1rem 1rem 1rem 0;
+}
+
+.top-section .right-pane-top {
+    grid-area: rt;
+    display: flex;
+}
+
+.top-section .right-pane-top .top-card {
+    margin: 1rem 0 0.5rem 0;
+}
+
+.top-section .right-pane-top p {
+    font-size: 13px;
+}
+
+.top-section .right-pane-top h1 {
+    font-size: 0.83em;
+}
+
+.top-section .right-pane-bottom {
+    grid-area: rb;
+    display: flex;
+}
+
+.top-section .right-pane-bottom .top-card {
+    margin: 0.5rem 0 1rem 0;
+}
+
+.top-section .right-pane-bottom p {
+    font-size: 13px;
+}
+
+.top-section .right-pane-bottom h1 {
+    font-size: 0.83em;
+}
+
+@media only screen and (max-width: 1150px) {
+    .top-section {
+        display: none;
+    }
+}

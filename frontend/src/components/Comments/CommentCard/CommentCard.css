@@ -1,0 +1,42 @@
+.comment .comment-card {
+    margin-bottom: 1rem;
+    border-top: 2px solid rgb(243, 243, 243);
+    box-shadow: 1px 1px 2px rgb(146, 146, 146);
+}
+
+.comment-card .info {
+    background-color: #ecf0f1;
+    padding: 0.5rem 1rem;
+    display: flex;
+}
+
+.comment-card .info .date,
+.comment-card .info .reply-count {
+    padding: 0 2rem;
+}
+.comment-card .info .reply-count a {
+    color: inherit;
+    text-decoration:none; 
+}
+.comment-card .info .reply-count a:hover {
+    color: red;
+}
+
+.comment-card .comment-content {
+    padding: 1rem;
+    border-bottom: 2px solid rgb(243, 243, 243);
+}
+
+@media only screen and (max-width: 620px) {
+    .comment-card .info {
+        font-size: xx-small;
+    }
+
+    .comment-card .info .date {
+        padding: 0 1rem;
+    }
+    .comment-card .info .reply-count {
+        padding-left: 1rem;
+        padding-right: 0;
+    }
+}

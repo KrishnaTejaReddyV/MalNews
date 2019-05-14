@@ -1,0 +1,84 @@
+.navbar {
+    font-family: inherit;
+    background-color: rgb(243, 243, 243);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    box-shadow: 1px 1px 2px rgb(146, 146, 146);
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.navbar .icon {
+    justify-self: flex-start;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+nav {
+    justify-self: flex-end;
+    padding: 0 8rem;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+}
+
+nav .logo {
+    justify-self: flex-start;
+    flex: 1;
+    text-align: center;
+    padding: 1.25rem;
+    cursor: pointer;
+}
+
+nav ul {
+    justify-self: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav li {
+    border-bottom: 2px solid rgb(243, 243, 243);
+}
+
+nav li a {
+    color: rgb(41, 41, 41);
+    font-size: .875rem;
+    font-weight: 700;
+    padding: 1.25rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+nav li a:hover,
+nav li a.selected {
+    color: red;
+    border-bottom: 2px solid red;
+}
+
+nav .search {
+    justify-self: flex-end;
+    flex: 1;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 1150px) {
+    nav {
+        padding: 0.25rem
+    }
+
+    nav ul,
+    nav .search {
+        display: none;
+    }
+}

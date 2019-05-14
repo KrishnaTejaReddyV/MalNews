@@ -1,0 +1,60 @@
+.signup {
+    position: fixed;  
+    top: 20vh;
+    left: 5%;
+    width: 90%;
+    background-color: white;
+    z-index: 3;
+    /* display: none; */
+}
+
+@media (min-width: 768px) {
+    .signup {
+      width: 30rem;
+      left: calc((100% - 30rem) / 2);
+    }
+}
+
+.signup-form {
+    width: 25rem;
+    max-width: 80%;
+    margin: 2rem auto;
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea {
+  width: 100%;
+  display: block;
+}
+
+.form-control label {
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  margin-bottom: 1.5rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.form-actions button {
+    display: inline;
+    margin: auto;
+    background-color: red;
+    color: white;
+    padding: 0.5rem 3rem;
+    cursor: pointer;
+    border: 1px solid red;
+    border-radius: 50px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.26);
+    outline:none;
+}
+
+.form-actions button:hover {
+  background: rgb(252, 72, 72);
+  border-color: rgb(252, 72, 72);
+}

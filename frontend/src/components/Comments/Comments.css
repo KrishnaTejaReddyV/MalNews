@@ -1,0 +1,33 @@
+.comments-header {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.comments-container {
+    margin: 1rem 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid rgb(243, 243, 243);
+}
+
+.comments-container .comment-list {
+    padding: 0;
+    list-style: none;
+}
+
+.post-comment {
+    margin-bottom: 1.5rem;
+}
+
+.post-comment textarea {
+    border-radius: 1rem;
+    outline: none;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    padding: 0 1rem;
+    display: block;
+}
+
+.post-comment textarea:focus {
+    border-width: 2px;
+}

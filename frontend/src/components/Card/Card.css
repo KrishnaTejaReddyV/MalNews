@@ -1,0 +1,99 @@
+.card {
+    margin: 1rem 0;
+    display: grid;
+    height: 10rem;
+    padding-bottom: 2rem;
+    grid-template-rows: 50% 16% 16% auto;
+    grid-template-columns: 33% 33% auto;
+    grid-template-areas: "title desc img" "author desc img" "date desc img" "comments desc img";
+    border-bottom: 2px solid rgb(243, 243, 243);
+}
+
+.card .card-image {
+    grid-area: img;
+    background-color: black;
+    overflow: hidden;
+}
+
+.card .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.card .card-image img:hover {
+    opacity: 1;
+}
+
+.card .card-title {
+    grid-area: title;
+    margin: 0;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.card .card-title a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card .card-title:hover {
+    color: red;
+}
+
+.card .author {
+    grid-area: author;
+    font-size: 0.875rem;
+    padding: 0 0.5rem;
+    margin: 0;
+}
+
+.card .date {
+    grid-area: date;
+    font-size: 0.875rem;
+    padding: 0 0.5rem;
+}
+
+.card .comments {
+    grid-area: comments;
+    font-size: 0.875rem;
+    padding: 0 0.5rem;
+    cursor: pointer;
+}
+
+.card .comments a {
+    color: inherit;
+    text-decoration:none; 
+}
+
+.card .comments a:hover {
+    color: red;
+}
+
+.card .card-description {
+    grid-area: desc;
+    padding: 0 2rem;
+    font-size: 0.875rem;
+    color: #444;
+    overflow: hidden;
+}
+
+.card .card-description p {
+    margin: 0;
+}
+
+
+@media only screen and (max-width: 1150px) {
+    .card {
+        height: 20rem;
+        grid-template-rows: 50% 15% 17% 6% 6% 6%;
+        grid-template-columns: auto;
+        grid-template-areas: "img" "title" "desc" "author" "date" "comments";
+    }
+
+    .card .card-description {
+        padding: 0.5rem;
+    }
+}

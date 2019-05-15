@@ -5,6 +5,9 @@
   "proxy": {
     "/graphql": {
       "target": "http://localhost:3001"
+    },
+    "/graphiql": {
+      "target": "http://localhost:3001"
     }
   },
   "dependencies": {

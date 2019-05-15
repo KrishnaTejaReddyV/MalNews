@@ -20,6 +20,10 @@ gem 'search_object_graphql', '0.1'
 
 gem 'rack-cors', :require => 'rack/cors'
 
+group :production do
+  gem 'pg'
+end
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

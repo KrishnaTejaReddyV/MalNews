@@ -7,8 +7,8 @@
     "yarn": "1.16.0"
   },
   "scripts": {
-    "build": "yarn --cwd client install && yarn --cwd client build",
-    "deploy": "cp -a client/build/. public/",
+    "build": "yarn --cwd frontend install && yarn --cwd frontend build",
+    "deploy": "cp -a frontend/build/. public/",
     "heroku-postbuild": "yarn build && yarn deploy"
   }
 }

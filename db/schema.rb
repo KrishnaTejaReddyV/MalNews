@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_08_053457) do
+ActiveRecord::Schema.define(version: 2019_05_15_212842) do
 
   create_table "apis", force: :cascade do |t|
     t.string "last_requested_date"

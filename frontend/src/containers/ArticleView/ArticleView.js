@@ -97,6 +97,64 @@ class ArticleView extends Component {
         });
     }
 
+    commentHandler = async (event, type) => {
+        if (event.key === "Enter") {
+            let content = event.target.value;
+
+            if (type === "comment") {
+                event.target.value = "";
+                await this.setState({isLoading: true});
+
+                let articleId = this.props.selectedArticle.id;
+
+                const requestBody = {
+                    query: `
+                        mutation {
+                            createComment(
+                                content: "${content}",
+                                parentId: ${articleId},
+                                parentType: "Article"
+                            ) {
+                                id
+                                content
+                                publishedAt
+                                postedBy {
+                                    name
+                                }
+                                replies {
+                                    id
+                                }
+                            }
+                        }
+
+                    `
+                };
+            
+                fetch('http://localhost:8000/graphql', {
+                    method: 'POST',
+                    credentials: 'include',
+                    body: JSON.stringify(requestBody),
+                    headers: {
+                    'Content-Type': 'application/json'
+                    }
+                }).then (res => {
+                    if (res.status !== 200 && res.status !== 201) {
+                        throw new Error('Failed!');
+                    }
+                    return res.json();
+                }).then (resData => {
+                    console.log(resData.data)
+                    const comment = { ...resData.data.createComment };
+                    this.props.appendComment(comment);
+                    this.setState({ isLoading: false });
+                }).catch (err => {
+                    console.log(err);
+                    this.setState({ isLoading: false });
+                });
+            }
+        }
+    }
+
     checkIfUpvoted = (article) => {
         let voted = article.votes.filter(vote => {
             if (vote.user.id === this.context.userId) {
@@ -140,12 +198,20 @@ class ArticleView extends Component {
                                         </React.Fragment>
                                     )}
                                     <button className="btn">
-                                        <a href={ "//" + article.url }>Read Full Article</a>
+                                        <a href={ article.url }>Read Full Article</a>
                                     </button>
                                 </li>
                                 <li id="comments">
-                                    <p className="comments-header">Comments</p>
-                                    <Comments comments={article.comments} />
+                                    { (this.context.token || (article.comments.length > 0)) && (
+                                        <React.Fragment>
+                                            <p className="comments-header">Comments</p>
+                                            <Comments 
+                                                comments={article.comments} 
+                                                type="comment" 
+                                                commentHandler={this.commentHandler}
+                                            />
+                                        </React.Fragment>
+                                    )}
                                 </li>
                             </ul> 
                         </div>
@@ -171,6 +237,7 @@ const mapDispatchToProps = dispatch => {
     return {
         viewArticle: (id) => dispatch({type: "VIEW_ARTICLE", id: id}),
         appendVote: (vote) => dispatch({type: "APPEND_VOTE", vote: vote}),
+        appendComment: (comment) => dispatch({type: "APPEND_COMMENT", comment: comment}),
         removeVote: (voteId) => dispatch({type: "REMOVE_VOTE", voteId: voteId})
     }
 }

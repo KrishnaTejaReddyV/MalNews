@@ -16,7 +16,7 @@ const Navbar = props => {
         <div className="navbar">
             <i className="fas fa-bars icon" onClick={props.toggleSideNav}></i>
             <nav>
-                <div className="logo"><NavLink to="/">MalNews</NavLink></div>
+                <div className="logo"><NavLink to="/"><span className="red-text">Mal</span>News</NavLink></div>
                 <ul>
                     <li>
                         <NavLink to="/malware" activeClassName="selected">Malware</NavLink>

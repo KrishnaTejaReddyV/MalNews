@@ -26,6 +26,7 @@
     height: auto;
     padding: 0 1rem;
     display: block;
+    font-family: inherit;
 }
 
 .post-comment textarea:focus {

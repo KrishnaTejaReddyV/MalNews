@@ -50,13 +50,22 @@ nav li {
     border-bottom: 2px solid rgb(243, 243, 243);
 }
 
-nav li a {
+nav li a,
+.logo a {
     color: rgb(41, 41, 41);
     font-size: .875rem;
     font-weight: 700;
     padding: 1.25rem;
     cursor: pointer;
     text-decoration: none;
+}
+
+.logo a {
+    font-size: 1.5rem;
+}
+
+.red-text {
+    color: red;
 }
 
 nav li a:hover,

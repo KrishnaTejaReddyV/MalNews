@@ -46,10 +46,23 @@ const reducer = (state = initialState, action) => {
                 selectedArticle: selArticle
             } 
         }
+        case 'APPEND_COMMENT' : {
+            let selArticle = { ...state.selectedArticle };
+            selArticle.comments.push(action.comment);
+
+            let articlesArr = [ ...state.articles ];
+            articlesArr[state.selectedArticleIndex] = selArticle;
+
+            return {
+                ...state,
+                articles: articlesArr,
+                selectedArticle: selArticle
+            } 
+        }
         case 'REMOVE_VOTE' : {
             let selArticle = { ...state.selectedArticle };
             selArticle.votes = selArticle.votes.filter((vote) => {
-                if (vote.id == action.voteId) {
+                if (vote.id === action.voteId) {
                     return false;
                 }
                 return true;

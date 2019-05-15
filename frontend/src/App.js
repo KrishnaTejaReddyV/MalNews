@@ -95,7 +95,7 @@ class App extends Component {
                 <Route path="/:category" component={FilteredArticles} />
               </Switch>
             </div>
-            <div className="footer">Copyright</div>
+            <div className="footer"><br/><br/></div>
           </UserContext.Provider>
         </React.Fragment>
       </BrowserRouter>

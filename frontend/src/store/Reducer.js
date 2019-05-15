@@ -2,17 +2,19 @@ const initialState = {
     comments: [],
     articles: [],
     articleIds: [],
-    selectedArticle: null
+    selectedArticle: null,
+    selectedArticleIndex: 0
 }
 
 const reducer = (state = initialState, action) => {
     switch( action.type ) {
-        case 'VIEW_ARTICLE': {       
+        case 'VIEW_ARTICLE': {  
             const index = state.articleIds.indexOf(action.id);
 
             return {
                 ...state,
-                selectedArticle: state.articles[index]
+                selectedArticle: state.articles[index],
+                selectedArticleIndex: index
             }
         }
         case 'APPEND_ARTICLES' : {
@@ -30,6 +32,37 @@ const reducer = (state = initialState, action) => {
                 articleIds: articleIds,
                 articles: [...state.articles, ...newEntries]
             }
+        }
+        case 'APPEND_VOTE' : {
+            let selArticle = { ...state.selectedArticle };
+            selArticle.votes.push(action.vote);
+
+            let articlesArr = [ ...state.articles ];
+            articlesArr[state.selectedArticleIndex] = selArticle;
+
+            return {
+                ...state,
+                articles: articlesArr,
+                selectedArticle: selArticle
+            } 
+        }
+        case 'REMOVE_VOTE' : {
+            let selArticle = { ...state.selectedArticle };
+            selArticle.votes = selArticle.votes.filter((vote) => {
+                if (vote.id == action.voteId) {
+                    return false;
+                }
+                return true;
+            })
+
+            let articlesArr = [ ...state.articles ];
+            articlesArr[state.selectedArticleIndex] = selArticle;
+
+            return {
+                ...state,
+                articles: articlesArr,
+                selectedArticle: selArticle
+            } 
         }
     }
     return state;

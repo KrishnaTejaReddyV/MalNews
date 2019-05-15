@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import AllArticles from './containers/AllArticles/AllArticles';
 import FilteredArticles from './containers/FilteredArticles/FilteredArticles';
 import SearchArticles from './containers/SearchArticles/SearchArticles';
 import Signup from './containers/Signup/Signup';
-import ArticleView from './components/ArticleView/ArticleView';
+import ArticleView from './containers/ArticleView/ArticleView';
 import Navbar from './components/Navbar/Navbar';
 import SideNav from './components/SideNav/SideNav';
 import Backdrop from './components/Backdrop/Backdrop';

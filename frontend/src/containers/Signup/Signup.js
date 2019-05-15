@@ -106,6 +106,7 @@ class Signup extends Component {
 
         fetch('http://localhost:8000/graphql', {
             method: 'POST',
+            credentials: 'include',
             body: JSON.stringify(request),
             headers: {
               'Content-Type': 'application/json'
@@ -160,7 +161,7 @@ class Signup extends Component {
                         {this.state.isLogin ? null : (
                             <div className="form-control">
                                 <label htmlFor="con-password">Confirm Password</label>
-                                <input type="con-password" id="con-password" ref={this.conPasswordEl} />
+                                <input type="password" id="con-password" ref={this.conPasswordEl} />
                             </div>
                         )}
                         <div className="form-actions">

@@ -62,6 +62,9 @@ class SearchArticles extends Component {
                             }
                             votes {
                                 id
+                                user {
+                                    id
+                                }
                             }
                         }
                     }
@@ -71,6 +74,7 @@ class SearchArticles extends Component {
             
             fetch('http://localhost:8000/graphql', {
                 method: 'POST',
+                credentials: 'include',
                 body: JSON.stringify(requestBody),
                 headers: {
                     'Content-Type': 'application/json'
@@ -133,6 +137,9 @@ class SearchArticles extends Component {
                         }
                         votes {
                             id
+                            user {
+                                id
+                            }
                         }
                     }
                 }
@@ -142,6 +149,7 @@ class SearchArticles extends Component {
       
         fetch('http://localhost:8000/graphql', {
             method: 'POST',
+            credentials: 'include',
             body: JSON.stringify(requestBody),
             headers: {
               'Content-Type': 'application/json'

@@ -60,6 +60,9 @@ class FilteredArticles extends Component {
                             }
                             votes {
                                 id
+                                user {
+                                    id
+                                }
                             }
                         }
                     }
@@ -69,6 +72,7 @@ class FilteredArticles extends Component {
           
             fetch('http://localhost:8000/graphql', {
                 method: 'POST',
+                credentials: 'include',
                 body: JSON.stringify(requestBody),
                 headers: {
                   'Content-Type': 'application/json'
@@ -116,6 +120,9 @@ class FilteredArticles extends Component {
                         }
                         votes {
                             id
+                            user {
+                                id
+                            }
                         }
                     }
                 }
@@ -125,6 +132,7 @@ class FilteredArticles extends Component {
       
         fetch('http://localhost:8000/graphql', {
             method: 'POST',
+            credentials: 'include',
             body: JSON.stringify(requestBody),
             headers: {
               'Content-Type': 'application/json'

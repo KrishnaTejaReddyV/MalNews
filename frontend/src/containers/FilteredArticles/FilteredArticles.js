@@ -70,7 +70,7 @@ class FilteredArticles extends Component {
                 `
             };
           
-            fetch('http://localhost:8000/graphql', {
+            fetch('/graphql', {
                 method: 'POST',
                 credentials: 'include',
                 body: JSON.stringify(requestBody),
@@ -130,7 +130,7 @@ class FilteredArticles extends Component {
             `
         };
       
-        fetch('http://localhost:8000/graphql', {
+        fetch('/graphql', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify(requestBody),

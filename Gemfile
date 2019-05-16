@@ -5,7 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rails', '~> 5.2.2'
 
 gem 'graphql', '1.8.13'
-gem 'graphiql-rails', '1.5.0', group: :development
+gem 'graphiql-rails', '1.5.0'
+# , group: :development
 
 gem 'bcrypt', '~> 3.1.7'
 

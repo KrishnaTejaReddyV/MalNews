@@ -41,7 +41,7 @@ class GraphqlController < ApplicationController
         "sortBy=publishedAt&" +
         "language=en&" +
         "pageSize=100&" +
-        ((!savedRecord) ? "" : ("from=" + Api.find(index + 1).last_requested_date)) + "&" +
+        ((!savedRecord) ? "" : ("from=" + Api.find(index + 1).last_requested_date + "&")) +
         "apiKey=" + Api.find(index + 1).key
 
       puts url

@@ -61,5 +61,5 @@ ActiveRecord::Schema.define(version: 2019_05_15_212842) do
     t.index ["article_id"], name: "index_votes_on_article_id"
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
-
+  
 end

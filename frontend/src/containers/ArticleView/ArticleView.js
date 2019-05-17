@@ -143,7 +143,6 @@ class ArticleView extends Component {
                     }
                     return res.json();
                 }).then (resData => {
-                    console.log(resData.data)
                     const comment = { ...resData.data.createComment };
                     this.props.appendComment(comment);
                     this.setState({ isLoading: false });

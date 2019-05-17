@@ -26,7 +26,8 @@ class Resolvers::ArticleSearch
             # max(url) as url, max(url_to_image) as url_to_image, max(published_at) as published_at, max(content) as content, 
             # max(created_at) as created_at, max(updated_at) as updated_at ").group(:title)
             # scope.order(published_at: :desc)
-            scope.select("DISTINCT(title), id, source, author, description, url, url_to_image, published_at, content, category, created_at, updated_at ").order(published_at: :desc)
+            # scope.select("DISTINCT(title), id, source, author, description, url, url_to_image, published_at, content, category, created_at, updated_at ").order(published_at: :desc)
+            Article.where(id: (Article.group(:title).pluck("max(id) as id"))).order(published_at: :desc)
         else
             scope.where(category: value).order(published_at: :desc)
         end

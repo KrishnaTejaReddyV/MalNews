@@ -1,7 +1,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
   
 workbox.routing.registerRoute(
-    /.*\/(?:graphql|malware|vulnerabilities|cyber_threat|cloud_security|software_exploits|search)/,
+    /.*\/(?:graphql|malware|vulnerabilities|cyber_threat|cloud_security|software_exploits|search|index\.html)/,
     workbox.strategies.networkFirst()
 )
 

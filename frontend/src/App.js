@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import HttpsRedirect from 'react-https-redirect';
 
 import AllArticles from './containers/AllArticles/AllArticles';
 import FilteredArticles from './containers/FilteredArticles/FilteredArticles';
@@ -55,50 +56,52 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <React.Fragment>
-          <UserContext.Provider
-            value={{
-              userId: this.state.userId,
-              name: this.state.name,
-              token: this.state.token,
-              login: this.login,
-              logout: this.logout
-            }}
-          >
-            <Navbar toggleSideNav={this.toggleSideNav} />
+      <HttpsRedirect>
+        <BrowserRouter>
+          <React.Fragment>
+            <UserContext.Provider
+              value={{
+                userId: this.state.userId,
+                name: this.state.name,
+                token: this.state.token,
+                login: this.login,
+                logout: this.logout
+              }}
+            >
+              <Navbar toggleSideNav={this.toggleSideNav} />
 
-            {(this.state.sideNavOpened || this.state.registering || this.state.loggingIn) && 
-              <Backdrop 
-                closeModals={this.closeModals}
-              />
-            }
-            {(this.state.sideNavOpened && (!this.state.registering && !this.state.loggingIn)) && 
-              <SideNav 
-                closeSideNav={this.toggleSideNav}
-                register={this.toggleRegister} 
-                login={this.toggleLogin}
-              />
-            }
-            {(this.state.loggingIn || this.state.registering) && 
-              <Signup 
-                type={this.state.registering ? "register" : "login"} 
-                closeModals={this.closeModals} 
-              />
-            }
+              {(this.state.sideNavOpened || this.state.registering || this.state.loggingIn) && 
+                <Backdrop 
+                  closeModals={this.closeModals}
+                />
+              }
+              {(this.state.sideNavOpened && (!this.state.registering && !this.state.loggingIn)) && 
+                <SideNav 
+                  closeSideNav={this.toggleSideNav}
+                  register={this.toggleRegister} 
+                  login={this.toggleLogin}
+                />
+              }
+              {(this.state.loggingIn || this.state.registering) && 
+                <Signup 
+                  type={this.state.registering ? "register" : "login"} 
+                  closeModals={this.closeModals} 
+                />
+              }
 
-            <div className="content">
-              <Switch>
-                <Route path="/" exact component={AllArticles} />
-                <Route path="/article/:id" exact component={ArticleView} />
-                <Route path="/search/:keyword" exact component={SearchArticles} />
-                <Route path="/:category" component={FilteredArticles} />
-              </Switch>
-            </div>
-            <div className="footer"><br/><br/></div>
-          </UserContext.Provider>
-        </React.Fragment>
-      </BrowserRouter>
+              <div className="content">
+                <Switch>
+                  <Route path="/" exact component={AllArticles} />
+                  <Route path="/article/:id" exact component={ArticleView} />
+                  <Route path="/search/:keyword" exact component={SearchArticles} />
+                  <Route path="/:category" component={FilteredArticles} />
+                </Switch>
+              </div>
+              <div className="footer"><br/><br/></div>
+            </UserContext.Provider>
+          </React.Fragment>
+        </BrowserRouter>
+      </HttpsRedirect>
     );
   }
 }

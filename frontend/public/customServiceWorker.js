@@ -25,10 +25,10 @@ workbox.routing.registerRoute(
     workbox.strategies.networkFirst()
 )
 
-// workbox.routing.registerRoute(
-//     'https://malnews123.herokuapp.com',
-//     workbox.strategies.networkFirst()
-// )
+workbox.routing.registerRoute(
+    'https://malnews123.herokuapp.com',
+    workbox.strategies.networkFirst()
+)
 
 const bgSyncPlugin = new workbox.backgroundSync.Plugin('graphqlQueue', {
     maxRetentionTime: 24 * 60

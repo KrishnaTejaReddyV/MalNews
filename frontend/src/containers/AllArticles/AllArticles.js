@@ -11,7 +11,8 @@ class AllArticles extends Component {
     state = {
         articles: [],
         pageCount: 0,
-        isLoading: false
+        isLoading: false,
+        isError: false
     }
 
     componentWillMount() {
@@ -70,7 +71,7 @@ class AllArticles extends Component {
                 this.setState({ articles: articles, isLoading: false });
             }).catch (err => {
                 console.log(err);
-                this.setState({ isLoading: false });
+                this.setState({ isLoading: false, isError: true });
             });
         }
     }
@@ -130,7 +131,7 @@ class AllArticles extends Component {
             this.setState({ articles: articles, isLoading: false });
         }).catch (err => {
             console.log(err);
-            this.setState({ isLoading: false });
+            this.setState({ isLoading: false, isError: true });
         });
     }
 
@@ -141,20 +142,22 @@ class AllArticles extends Component {
                 {this.state.isLoading && <Loader />}
                 <div className="top-section">
                     <div className="left-pane">
-                    {!this.state.isLoading && 
+                    {!this.state.isLoading && !this.state.isError &&
                         <TopCard article={this.state.articles[0]} />}
                     </div>
                     <div className="right-pane-top">
-                    {!this.state.isLoading && 
+                    {!this.state.isLoading && !this.state.isError &&
                         <TopCard article={this.state.articles[1]} />}
                     </div>
                     <div className="right-pane-bottom">
-                    {!this.state.isLoading && 
+                    {!this.state.isLoading && !this.state.isError &&
                         <TopCard article={this.state.articles[2]} />}
                     </div>
                 </div>
                 <div className="bottom-section">
-                    <CategoryList articles={this.state.articles.slice(3)} loadArticles={this.loadMoreArticles} />
+                    { !this.state.isError &&
+                        <CategoryList articles={this.state.articles.slice(3)} loadArticles={this.loadMoreArticles} />
+                    }
                 </div>
             </React.Fragment>
         );

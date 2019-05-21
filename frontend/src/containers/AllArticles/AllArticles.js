@@ -158,10 +158,10 @@ class AllArticles extends Component {
                     { !this.state.isLoading && !this.state.isError &&
                         <CategoryList articles={this.state.articles.slice(3)} loadArticles={this.loadMoreArticles} />
                     }
-                    { this.state.isError &&
-                        <h1 className="error_header">Failed to Load Articles!</h1>
-                    }
                 </div>
+                { this.state.isError &&
+                    <h1 className="error_header">Failed to Load Articles!</h1>
+                }
             </React.Fragment>
         );
     }

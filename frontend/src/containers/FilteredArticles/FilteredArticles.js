@@ -8,7 +8,8 @@ class FilteredArticles extends Component {
     state = {
         articles: [],
         pageCount: 0,
-        isLoading: false
+        isLoading: false,
+        isError: false
     }
 
     categories = ["malware", "vulnerabilities", "cyber_threat", "cloud_security", "software_exploits"];
@@ -88,7 +89,7 @@ class FilteredArticles extends Component {
                 this.setState({ articles: articles, isLoading: false });
             }).catch (err => {
                 console.log(err);
-                this.setState({ isLoading: false });
+                this.setState({ isLoading: false, isError: true });
             });
         }
     }
@@ -148,7 +149,7 @@ class FilteredArticles extends Component {
             this.setState({ articles: articles, isLoading: false });
         }).catch (err => {
             console.log(err);
-            this.setState({ isLoading: false });
+            this.setState({ isLoading: false, isError: true });
         });
     }
 
@@ -156,12 +157,17 @@ class FilteredArticles extends Component {
         if (this.categories.includes(this.props.match.params.category)) {
             return (
                 <React.Fragment>
-                    {this.state.isLoading && <Loader />}
-                    <CategoryList 
-                        articles={this.state.articles} 
-                        category={this.props.match.params.category}
-                        loadArticles={this.loadMoreArticles} 
-                    />
+                    { this.state.isLoading && <Loader /> }
+                    { !this.state.isLoading && !this.state.isError &&
+                        <CategoryList 
+                            articles={this.state.articles} 
+                            category={this.props.match.params.category}
+                            loadArticles={this.loadMoreArticles} 
+                        />
+                    }
+                    { this.state.isError &&
+                        <h1 className="error_header">Failed to Load Articles!</h1>
+                    }
                 </React.Fragment>
             );
         } else {

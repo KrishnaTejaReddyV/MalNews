@@ -155,8 +155,11 @@ class AllArticles extends Component {
                     </div>
                 </div>
                 <div className="bottom-section">
-                    { !this.state.isError &&
+                    { !this.state.isLoading && !this.state.isError &&
                         <CategoryList articles={this.state.articles.slice(3)} loadArticles={this.loadMoreArticles} />
+                    }
+                    { this.state.isError &&
+                        <h1 className="error_header">Failed to Load Articles!</h1>
                     }
                 </div>
             </React.Fragment>

@@ -155,7 +155,7 @@ class AllArticles extends Component {
                     </div>
                 </div>
                 <div className="bottom-section">
-                    { !this.state.isLoading && !this.state.isError &&
+                    { !this.state.isError &&
                         <CategoryList articles={this.state.articles.slice(3)} loadArticles={this.loadMoreArticles} />
                     }
                 </div>

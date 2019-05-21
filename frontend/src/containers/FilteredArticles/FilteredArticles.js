@@ -158,7 +158,7 @@ class FilteredArticles extends Component {
             return (
                 <React.Fragment>
                     { this.state.isLoading && <Loader /> }
-                    { !this.state.isLoading && !this.state.isError &&
+                    { !this.state.isError &&
                         <CategoryList 
                             articles={this.state.articles} 
                             category={this.props.match.params.category}

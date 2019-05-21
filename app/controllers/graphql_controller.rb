@@ -19,12 +19,11 @@ class GraphqlController < ApplicationController
 
   # initializes articles table with data from news api
   def init_db
-
     # define categories and iterate through them
     types = ["malware", "vulnerability", "cyber threat", "cloud security", "software exploits"]
     types.each_with_index { |type, index|
+
       # Add entry into apis table if not exists
-      
       if (!Api.exists?(id: index + 1))
         Api.create!(
           key: Global::GlobalVariables::API_Key,
@@ -43,8 +42,6 @@ class GraphqlController < ApplicationController
         "pageSize=100&" +
         ((!savedRecord) ? "" : ("from=" + Api.find(index + 1).last_requested_date + "&")) +
         "apiKey=" + Api.find(index + 1).key
-
-      puts url
       
       response = JSON.parse(RestClient.get(url))
 
@@ -74,7 +71,6 @@ class GraphqlController < ApplicationController
         }
       end
     }
-
   end
 
   # gets current user from token stored in the session

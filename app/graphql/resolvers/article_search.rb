@@ -22,7 +22,11 @@ class Resolvers::ArticleSearch
 
     def filter_category(scope, value) 
         if value.blank?
-            scope.where(id: (scope.group(:title).pluck("max(id) as id"))).order(published_at: :desc)
+            if Rails.env.development?
+                scope.group(:title).order(published_at: :desc)
+            else
+                scope.where(id: (scope.group(:title).pluck("max(id) as id"))).order(published_at: :desc)
+            end
         else
             scope.where(category: value).order(published_at: :desc)
         end

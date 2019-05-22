@@ -5,6 +5,10 @@ A Ruby on Rails, React.js and GraphQL based Full Stack application which display
 The application is hosted at:
 https://malnews123.herokuapp.com/
 
+To run the application in development environment:
+- Download the project and cd into it
+- Run rake start
+
 Following are the supported features:
 - Loads few articles from all categories in landing page
 - Loads category filtered articles under each category tab

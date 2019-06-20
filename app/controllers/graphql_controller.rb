@@ -35,7 +35,7 @@ class GraphqlController < ApplicationController
       savedRecord = Article.order(published_at: :desc).find_by(category: type)
 
       # get the latest data from the url
-      url = "https://newsapi.org/v2/everything?" +
+      url = "https://newsapi.org/v2/everything?" + 
         "q=" + type + "&" +
         "sortBy=publishedAt&" +
         "language=en&" +
